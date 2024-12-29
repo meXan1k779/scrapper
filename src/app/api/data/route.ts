@@ -34,9 +34,9 @@ export async function GET(request: NextRequest) {
 
     // Возвращаем результат
     const res = items.map((item: any, i: number) => ({ ...item, ...costs.data[i] }))
-console.log('222', emexData)
-    const filtered = filterArrays(res, emexData)
-    return Response.json({ items: filtered });
+
+    // const filtered = filterArrays(res, emexData)
+    return Response.json({ items: {autopiter: res, emex: emexData} });
   } catch (error) {
     console.error('Error scraping data:', error);
     return Response.json({ error: 'Internal Server Error' });
